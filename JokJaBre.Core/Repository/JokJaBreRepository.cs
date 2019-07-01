@@ -8,7 +8,7 @@ using System.Text;
 namespace JokJaBre.Core.Repository
 {
     public class JokJaBreRepository<TModel> : IJokJaBreRepository<TModel>
-        where TModel : JokJaBreModel
+        where TModel : class, IJokJaBreModel
     {
         protected DbContext m_context;
         public JokJaBreRepository(DbContext context)
@@ -21,6 +21,8 @@ namespace JokJaBre.Core.Repository
             try
             {
                 var res = m_context.Set<TModel>().Add(model);
+                m_context.SaveChanges();
+
                 return GetById(res.Entity.Id);
             }
             catch (Exception ex)

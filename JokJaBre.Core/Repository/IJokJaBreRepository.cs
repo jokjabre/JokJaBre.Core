@@ -1,10 +1,14 @@
 ﻿using JokJaBre.Core.Objects;
+using System.Collections.Generic;
 
 namespace JokJaBre.Core.Repository
 {
-    public interface IJokJaBreRepository<T> : IJokJaBreCrudProvider<T>
-        where T : JokJaBreModel
+    public interface IJokJaBreRepository<TModel>
+        where TModel : IJokJaBreModel
     {
-        
+        IEnumerable<TModel> GetAll();
+        TModel GetById(long id);
+
+        TModel Create(TModel model);
     }
 }

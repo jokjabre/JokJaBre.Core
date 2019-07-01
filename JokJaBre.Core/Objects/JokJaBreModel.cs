@@ -4,8 +4,8 @@ using System.Text;
 
 namespace JokJaBre.Core.Objects
 {
-    public class JokJaBreModel : IJokJaBreObject
+    public interface IJokJaBreModel : IJokJaBreObject
     {
-        public long Id { get; set; }
+        long Id { get; set; }
     }
 }

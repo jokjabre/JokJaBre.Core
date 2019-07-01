@@ -4,9 +4,15 @@ using System.Text;
 
 namespace JokJaBre.Core.Objects
 {
-    public class JokJaBreRequest<T> : IJokJaBreObject
-        where T : JokJaBreModel
-    {
 
+    public interface IJokJaBreRequest : IJokJaBreObject
+    {
+        void SetTo(IJokJaBreModel obj);
+    }
+
+    public abstract class JokJaBreRequest<T> : IJokJaBreRequest
+        where T : IJokJaBreModel
+    {
+        public abstract void SetTo(IJokJaBreModel obj);
     }
 }

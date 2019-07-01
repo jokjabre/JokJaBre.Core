@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using JokJaBre.Core.Extensions;
@@ -7,10 +8,8 @@ using JokJaBre.Core.Repository;
 
 namespace JokJaBre.Core.Objects.Service
 {
-    public class JokJaBreService<TModel, TRequest, TResponse> : IJokJaBreService<TModel, TRequest, TResponse>
-        where TModel : JokJaBreModel
-        where TRequest : JokJaBreRequest<TModel>
-        where TResponse : JokJaBreResponse<TModel>
+    public class JokJaBreService<TModel> : IJokJaBreService<TModel>
+        where TModel : IJokJaBreModel
     {
         protected IJokJaBreRepository<TModel> m_repository;
         public JokJaBreService(IJokJaBreRepository<TModel> repository)
@@ -18,21 +17,25 @@ namespace JokJaBre.Core.Objects.Service
             m_repository = repository;
         }
 
-        public JokJaBreResponse<TModel> Create(JokJaBreRequest<TModel> request)
+        public TResponse Create<TRequest, TResponse>(TRequest request)
+            where TRequest : IJokJaBreRequest
+            where TResponse : IJokJaBreResponse
         {
-            TModel model = request.ToModel();
+            TModel model = request.ToModel<TRequest, TModel>();
 
-            return m_repository.Create(model).ToResponse();
+            return m_repository.Create(model).ToResponse<TResponse>();
         }
 
-        public IEnumerable<JokJaBreResponse<TModel>> GetAll()
+        public IEnumerable<TResponse> GetAll<TResponse>()
+            where TResponse : IJokJaBreResponse
         {
-            return m_repository.GetAll().ToResponse();
+            return m_repository.GetAll().ToResponse<TModel, TResponse>();
         }
 
-        public JokJaBreResponse<TModel> GetById(long id)
+        public TResponse GetById<TResponse>(long id)
+            where TResponse : IJokJaBreResponse
         {
-            return m_repository.GetById(id).ToResponse();
+            return m_repository.GetById(id).ToResponse<TResponse>();
         }
     }
 }

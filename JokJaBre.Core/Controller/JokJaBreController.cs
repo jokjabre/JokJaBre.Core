@@ -5,30 +5,22 @@ using System;
 
 namespace JokJaBre.Core.Controller
 {
-    public class JokJaBreController<TModel, TRequest, TResponse> : ControllerBase, IJokJaBreController<TModel, TRequest, TResponse>
-        where TModel : JokJaBreModel
-        where TRequest : JokJaBreRequest<TModel>
-        where TResponse : JokJaBreResponse<TModel>
+    public abstract class JokJaBreController<TModel> : ControllerBase //, IJokJaBreController<TModel>
+        where TModel : IJokJaBreModel
     {
-        protected IJokJaBreService<TModel, TRequest, TResponse> m_service;
-        public JokJaBreController(IJokJaBreService<TModel, TRequest, TResponse> service)
+        protected IJokJaBreService<TModel> m_service;
+        public JokJaBreController(IJokJaBreService<TModel> service)
         {
             m_service = service;
         }
 
-        public IActionResult Create(TRequest request)
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpPost]
+        //public abstract IActionResult Create(IJokJaBreRequest request);
 
-        public IActionResult GetAll()
-        {
-            return Ok(m_service.GetAll());
-        }
+        //[HttpGet]
+        //public abstract IActionResult GetAll();
 
-        public IActionResult GetById(long id)
-        {
-            return Ok(m_service.GetById(id));
-        }
+        //[HttpGet("{id}")]
+        //public abstract IActionResult GetById(long id);
     }
 }

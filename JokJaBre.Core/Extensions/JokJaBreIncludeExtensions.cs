@@ -9,7 +9,7 @@ namespace JokJaBre.Core.Extensions
     {
 
         public static IQueryable<TResult> SelectEx<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector)
-            where TResult : JokJaBreModel
+            where TResult : IJokJaBreModel
         {
             return source.Select(selector);
         }
