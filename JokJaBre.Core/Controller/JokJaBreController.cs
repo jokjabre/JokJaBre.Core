@@ -13,14 +13,5 @@ namespace JokJaBre.Core.Controller
         {
             m_service = service;
         }
-
-        //[HttpPost]
-        //public abstract IActionResult Create(IJokJaBreRequest request);
-
-        //[HttpGet]
-        //public abstract IActionResult GetAll();
-
-        //[HttpGet("{id}")]
-        //public abstract IActionResult GetById(long id);
     }
 }
