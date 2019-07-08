@@ -13,5 +13,10 @@ namespace JokJaBre.Core.Controller
         {
             m_service = service;
         }
+
+        protected IActionResult CheckState(object result)
+        {
+            return !ModelState.IsValid ? BadRequest() : (IActionResult)Ok(result);
+        }
     }
 }

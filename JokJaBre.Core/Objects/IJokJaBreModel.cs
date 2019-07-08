@@ -6,6 +6,5 @@ namespace JokJaBre.Core.Objects
 {
     public interface IJokJaBreModel : IJokJaBreObject
     {
-        long Id { get; set; }
     }
 }

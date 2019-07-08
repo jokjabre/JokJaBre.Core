@@ -32,10 +32,10 @@ namespace JokJaBre.Core.Objects.Service
             return m_repository.GetAll().ToResponse<TModel, TResponse>();
         }
 
-        public TResponse GetById<TResponse>(long id)
+        public TResponse GetById<TResponse, TClass>(TClass key)
             where TResponse : IJokJaBreResponse
         {
-            return m_repository.GetById(id).ToResponse<TResponse>();
+            return m_repository.GetById(key).ToResponse<TResponse>();
         }
     }
 }

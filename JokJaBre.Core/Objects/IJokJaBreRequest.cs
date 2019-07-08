@@ -13,6 +13,13 @@ namespace JokJaBre.Core.Objects
     public abstract class JokJaBreRequest<T> : IJokJaBreRequest
         where T : IJokJaBreModel
     {
-        public abstract void SetTo(IJokJaBreModel obj);
+        public abstract void SetTo(T obj);
+        public void SetTo(IJokJaBreModel obj)
+        {
+            if(obj is T)
+            {
+                SetTo((T)obj);
+            }
+        }
     }
 }

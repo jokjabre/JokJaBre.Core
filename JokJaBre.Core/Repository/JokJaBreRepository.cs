@@ -22,12 +22,13 @@ namespace JokJaBre.Core.Repository
             {
                 var res = m_context.Set<TModel>().Add(model);
                 m_context.SaveChanges();
+                res.Reload();
 
-                return GetById(res.Entity.Id);
+                return res.Entity;
             }
             catch (Exception ex)
             {
-                throw ApiExceptions.Error(ex.Message);
+                throw ApiExceptions.Error("Error while creating object", ex);
             }
         }
 
@@ -39,20 +40,28 @@ namespace JokJaBre.Core.Repository
             }
             catch(Exception ex)
             {
-                throw ApiExceptions.Error(ex.Message);
+                throw ApiExceptions.Error("Error while retrieving all objects", ex);
             }
         }
 
-        public TModel GetById(long id)
+        public TModel GetById<TClass>(TClass key, bool shouldThrow = true)
         {
+            TModel result;
             try
             {
-                return m_context.Find<TModel>(id) ?? throw ApiExceptions.ObjectNotFound;
+                result =  m_context.Find<TModel>(key);
             }
             catch (Exception ex)
             {
-                throw ApiExceptions.Error(ex.Message);
+                throw ApiExceptions.Error("Error while retrieving object", ex);
             }
+
+            if(result == null && shouldThrow)
+            {
+                throw ApiExceptions.ObjectNotFound;
+            }
+
+            return result;
         }
     }
 }

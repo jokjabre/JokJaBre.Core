@@ -11,5 +11,9 @@ namespace JokJaBre.Core.Exceptions
         {
             ReturnCode = returnCode;
         }
+        public ApiException(string message, Exception inner, int returnCode) : base(message, inner)
+        {
+            ReturnCode = returnCode;
+        }
     }
 }

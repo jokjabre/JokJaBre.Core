@@ -15,5 +15,6 @@ namespace JokJaBre.Core.Exceptions
         public static ApiException NotFound(string message) => new ApiException(message, 404);
 
         public static ApiException Error(string message) => new ApiException(message, 500);
+        public static ApiException Error(string message, Exception inner) => new ApiException(message, inner, 500);
     }
 }

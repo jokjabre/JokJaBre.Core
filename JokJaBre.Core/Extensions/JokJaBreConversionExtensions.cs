@@ -10,6 +10,8 @@ namespace JokJaBre.Core.Extensions
         public static TResponse ToResponse<TResponse>(this IJokJaBreModel model) 
             where TResponse : IJokJaBreResponse
         {
+            if (model == null) return default;
+
             var response = (TResponse)Activator.CreateInstance(typeof(TResponse));
             model.CopyTo(response);
             response.SetFrom(model);
@@ -28,6 +30,8 @@ namespace JokJaBre.Core.Extensions
             where TRequest : IJokJaBreRequest
             where TModel : IJokJaBreModel
         {
+            if (request == null) return default;
+
             var model = (TModel)Activator.CreateInstance(typeof(TModel));
             request.CopyTo(model);
             request.SetTo(model);

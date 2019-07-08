@@ -7,7 +7,7 @@ namespace JokJaBre.Core.Repository
         where TModel : IJokJaBreModel
     {
         IEnumerable<TModel> GetAll();
-        TModel GetById(long id);
+        TModel GetById<TClass>(TClass key, bool shouldThrow = true);
 
         TModel Create(TModel model);
     }
