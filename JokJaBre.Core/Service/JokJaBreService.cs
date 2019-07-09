@@ -5,8 +5,9 @@ using System.Text;
 using JokJaBre.Core.Extensions;
 using JokJaBre.Core.Service;
 using JokJaBre.Core.Repository;
+using JokJaBre.Core.Objects;
 
-namespace JokJaBre.Core.Objects.Service
+namespace JokJaBre.Core.Service
 {
     public class JokJaBreService<TModel> : IJokJaBreService<TModel>
         where TModel : IJokJaBreModel

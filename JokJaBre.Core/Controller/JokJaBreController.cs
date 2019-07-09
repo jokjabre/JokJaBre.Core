@@ -5,18 +5,13 @@ using System;
 
 namespace JokJaBre.Core.Controller
 {
-    public abstract class JokJaBreController<TModel> : ControllerBase //, IJokJaBreController<TModel>
+    public abstract class JokJaBreController<TModel> : JokJaBreControllerBase
         where TModel : IJokJaBreModel
     {
         protected IJokJaBreService<TModel> m_service;
         public JokJaBreController(IJokJaBreService<TModel> service)
         {
             m_service = service;
-        }
-
-        protected IActionResult CheckState(object result)
-        {
-            return !ModelState.IsValid ? BadRequest() : (IActionResult)Ok(result);
         }
     }
 }
