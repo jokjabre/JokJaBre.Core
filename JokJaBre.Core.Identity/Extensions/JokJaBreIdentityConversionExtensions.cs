@@ -1,14 +1,8 @@
-﻿using JokJaBre.Core.Auth.Identity;
-using JokJaBre.Core.Auth.Objects;
-using JokJaBre.Core.Extensions;
-using JokJaBre.Core.Objects;
+﻿using JokJaBre.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace JokJaBre.Core.Auth.Extensions
+namespace JokJaBre.Core.Identity
 {
     public static class JokJaBreIdentityConversionExtensions
     {

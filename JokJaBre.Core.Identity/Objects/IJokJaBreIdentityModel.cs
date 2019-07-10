@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JokJaBre.Core.Auth.Objects
+namespace JokJaBre.Core.Identity
 {
     public interface IJokJaBreIdentityModel : IJokJaBreModel
     {

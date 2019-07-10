@@ -1,15 +1,7 @@
-﻿
-using System;
-using JokJaBre.Core.Service;
-using JokJaBre.Core.Repository;
-using JokJaBre.Core.Auth.Objects;
-using Microsoft.Extensions.Configuration;
-using JokJaBre.Core.Auth.Repository;
-using JokJaBre.Core.Objects;
-using JokJaBre.Core.Auth.Extensions;
+﻿using Microsoft.Extensions.Configuration;
 using JokJaBre.Core.Exceptions;
 
-namespace JokJaBre.Core.Auth.Service
+namespace JokJaBre.Core.Identity
 {
     public class JokJaBreIdentityService<TIdentityModel> : IJokJaBreIdentityService<TIdentityModel>
         where TIdentityModel : IJokJaBreIdentityModel

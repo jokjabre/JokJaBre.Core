@@ -1,11 +1,8 @@
-﻿using JokJaBre.Core.Auth.Identity;
-using JokJaBre.Core.Auth.Objects;
-using JokJaBre.Core.Exceptions;
+﻿using JokJaBre.Core.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 
-namespace JokJaBre.Core.Auth.Repository
+namespace JokJaBre.Core.Identity
 {
     public class JokJaBreIdentityRepository<TIdentityModel> : IJokJaBreIdentityRepository<TIdentityModel>
         where TIdentityModel : class, IJokJaBreIdentityModel

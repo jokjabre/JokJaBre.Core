@@ -1,10 +1,4 @@
-﻿using JokJaBre.Core.Auth.Objects;
-using JokJaBre.Core.Objects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JokJaBre.Core.Service
+﻿namespace JokJaBre.Core.Identity
 {
     public interface IJokJaBreIdentityService<TIdentityModel> 
         where TIdentityModel : IJokJaBreIdentityModel

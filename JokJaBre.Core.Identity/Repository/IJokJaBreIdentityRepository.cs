@@ -1,6 +1,4 @@
-﻿using JokJaBre.Core.Auth.Objects;
-
-namespace JokJaBre.Core.Auth.Repository
+﻿namespace JokJaBre.Core.Identity
 {
     public interface IJokJaBreIdentityRepository<TIdentityModel> where TIdentityModel : IJokJaBreIdentityModel
     {

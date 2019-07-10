@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokJaBre.Core", "JokJaBre.Core\JokJaBre.Core.csproj", "{6DD6D52D-602A-44D0-AFC1-0FCB32760286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokJaBre.Core", "JokJaBre.Core\JokJaBre.Core.csproj", "{6DD6D52D-602A-44D0-AFC1-0FCB32760286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokJaBre.Core.Auth", "JokJaBre.Core.Auth\JokJaBre.Core.Auth.csproj", "{3B39E3FF-F16C-426B-9C73-76756D2F38B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokJaBre.Core.Identity", "JokJaBre.Core.Identity\JokJaBre.Core.Identity.csproj", "{95AE8A30-9051-4AB2-9923-84DEF731FAA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6DD6D52D-602A-44D0-AFC1-0FCB32760286}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DD6D52D-602A-44D0-AFC1-0FCB32760286}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DD6D52D-602A-44D0-AFC1-0FCB32760286}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B39E3FF-F16C-426B-9C73-76756D2F38B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B39E3FF-F16C-426B-9C73-76756D2F38B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B39E3FF-F16C-426B-9C73-76756D2F38B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B39E3FF-F16C-426B-9C73-76756D2F38B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AE8A30-9051-4AB2-9923-84DEF731FAA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AE8A30-9051-4AB2-9923-84DEF731FAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AE8A30-9051-4AB2-9923-84DEF731FAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AE8A30-9051-4AB2-9923-84DEF731FAA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

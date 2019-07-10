@@ -1,12 +1,7 @@
-﻿using JokJaBre.Core.Auth.Objects;
-using JokJaBre.Core.Controller;
-using JokJaBre.Core.Service;
+﻿using JokJaBre.Core.Controller;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace JokJaBre.Core.Auth.Controller
+namespace JokJaBre.Core.Identity
 {
     public class JokJaBreIdentityController<TIdentityModel, TRequest, TResponse> : JokJaBreControllerBase
         where TIdentityModel : IJokJaBreIdentityModel

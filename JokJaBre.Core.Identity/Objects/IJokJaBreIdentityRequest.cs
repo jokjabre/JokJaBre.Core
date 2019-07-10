@@ -1,6 +1,6 @@
 ﻿using JokJaBre.Core.Objects;
 
-namespace JokJaBre.Core.Auth.Objects
+namespace JokJaBre.Core.Identity
 {
 
     public interface IJokJaBreIdentityRequest : IJokJaBreObject
