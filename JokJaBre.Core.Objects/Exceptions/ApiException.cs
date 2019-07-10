@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JokJaBre.Core.Exceptions
+namespace JokJaBre.Core.Objects
 {
     public class ApiException : Exception
     {
@@ -14,6 +15,11 @@ namespace JokJaBre.Core.Exceptions
         public ApiException(string message, Exception inner, int returnCode) : base(message, inner)
         {
             ReturnCode = returnCode;
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

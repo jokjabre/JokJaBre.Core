@@ -1,13 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using JokJaBre.Core.Extensions;
-using JokJaBre.Core.Service;
-using JokJaBre.Core.Repository;
 using JokJaBre.Core.Objects;
 
-namespace JokJaBre.Core.Service
+namespace JokJaBre.Core.API
 {
     public class JokJaBreService<TModel> : IJokJaBreService<TModel>
         where TModel : IJokJaBreModel

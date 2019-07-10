@@ -1,4 +1,4 @@
-﻿using JokJaBre.Core.Exceptions;
+﻿using JokJaBre.Core.Objects;
 using Microsoft.EntityFrameworkCore;
 using System;
 

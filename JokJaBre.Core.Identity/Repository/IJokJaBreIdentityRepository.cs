@@ -1,4 +1,6 @@
-﻿namespace JokJaBre.Core.Identity
+﻿using JokJaBre.Core.Objects;
+
+namespace JokJaBre.Core.Identity
 {
     public interface IJokJaBreIdentityRepository<TIdentityModel> where TIdentityModel : IJokJaBreIdentityModel
     {

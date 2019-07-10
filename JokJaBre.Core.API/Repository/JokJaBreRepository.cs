@@ -1,11 +1,9 @@
-﻿using JokJaBre.Core.Exceptions;
-using JokJaBre.Core.Objects;
+﻿using JokJaBre.Core.Objects;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace JokJaBre.Core.Repository
+namespace JokJaBre.Core.API
 {
     public class JokJaBreRepository<TModel> : IJokJaBreRepository<TModel>
         where TModel : class, IJokJaBreModel

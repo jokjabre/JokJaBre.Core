@@ -1,7 +1,7 @@
 ﻿using JokJaBre.Core.Objects;
 using System.Collections.Generic;
 
-namespace JokJaBre.Core.Repository
+namespace JokJaBre.Core.API
 {
     public interface IJokJaBreRepository<TModel>
         where TModel : IJokJaBreModel

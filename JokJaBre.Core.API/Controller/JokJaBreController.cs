@@ -1,9 +1,9 @@
 ﻿using JokJaBre.Core.Objects;
-using JokJaBre.Core.Service;
+using JokJaBre.Core.API;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace JokJaBre.Core.Controller
+namespace JokJaBre.Core.API
 {
     public abstract class JokJaBreController<TModel> : JokJaBreControllerBase
         where TModel : IJokJaBreModel

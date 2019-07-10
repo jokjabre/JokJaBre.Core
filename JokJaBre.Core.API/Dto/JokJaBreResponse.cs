@@ -1,12 +1,7 @@
-﻿using JokJaBre.Core.Extensions;
+﻿using JokJaBre.Core.Objects;
 
-namespace JokJaBre.Core.Objects
+namespace JokJaBre.Core.API.Dto
 {
-    public interface IJokJaBreResponse : IJokJaBreObject
-    {
-        void SetFrom(IJokJaBreModel model);
-    }
-
     public abstract class JokJaBreResponse<TModel> : IJokJaBreResponse
         where TModel : IJokJaBreModel
     {

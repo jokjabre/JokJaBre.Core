@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JokJaBre.Core.Controller
+namespace JokJaBre.Core.API
 {
     public class JokJaBreControllerBase : ControllerBase
     {

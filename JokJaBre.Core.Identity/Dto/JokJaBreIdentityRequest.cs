@@ -2,18 +2,8 @@
 
 namespace JokJaBre.Core.Identity
 {
-
-    public interface IJokJaBreIdentityRequest : IJokJaBreObject
-    {
-        string Username { get; set; }
-        string Email { get; set; }
-        string Password { get; set; }
-
-        void SetTo(IJokJaBreIdentityModel obj);
-    }
-
     public abstract class JokJaBreIdentityRequest<TIdentityModel> : IJokJaBreIdentityRequest
-        where TIdentityModel : IJokJaBreIdentityModel
+      where TIdentityModel : IJokJaBreIdentityModel
     {
         public string Username { get; set; }
         public string Email { get; set; }

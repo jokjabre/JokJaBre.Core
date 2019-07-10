@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JokJaBre.Core.Service
+namespace JokJaBre.Core.API
 {
     public interface IJokJaBreService<TModel> 
         where TModel : IJokJaBreModel

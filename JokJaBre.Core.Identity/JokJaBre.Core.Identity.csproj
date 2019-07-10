@@ -10,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JokJaBre.Core\JokJaBre.Core.csproj" />
+    <ProjectReference Include="..\JokJaBre.Core.API\JokJaBre.Core.API.csproj" />
+    <ProjectReference Include="..\JokJaBre.Core.Objects\JokJaBre.Core.Objects.csproj" />
   </ItemGroup>
 
   <ItemGroup>

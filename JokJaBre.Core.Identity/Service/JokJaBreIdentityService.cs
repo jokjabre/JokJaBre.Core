@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using JokJaBre.Core.Exceptions;
+using JokJaBre.Core.Objects;
 
 namespace JokJaBre.Core.Identity
 {

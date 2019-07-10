@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JokJaBre.Core.Exceptions
+namespace JokJaBre.Core.Objects
 {
     public static class ApiExceptions
     {
