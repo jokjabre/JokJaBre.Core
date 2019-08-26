@@ -12,7 +12,7 @@ namespace JokJaBre.Core.Extensions
         {
             if (model == null) return default;
 
-            var response = (TResponse)Activator.CreateInstance(typeof(TResponse));
+            var response = Activator.CreateInstance<TResponse>();
             model.CopyTo(response);
             response.SetFrom(model);
 

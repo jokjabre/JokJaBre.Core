@@ -2,10 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <PackageId>JokJaBre.Core.Identity</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>JokJaBre</Authors>
+    <Company>JokJaBre</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.2.0" />
     <PackageReference Include="Okta.AspNetCore" Version="1.2.0" />
   </ItemGroup>
 
