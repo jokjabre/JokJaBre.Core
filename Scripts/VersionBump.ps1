@@ -1,14 +1,26 @@
 Add-Type -AssemblyName 'System.Xml.Linq'
 
 
-$path = 
+function Bump-Version($file)
+{
+    $doc = [System.Xml.Linq.XDocument]::Load($file)
+    $elem = $doc.Root.Element("PropertyGroup").Element("Version")
+    $version = $elem.Value.Split('.')
+    $newVersion = $version[0] + "." + $version[1] + "." + ([int]::Parse($version[2]) + 1)
 
-$file = [System.IO.Path]::Combine($args[0], $args[1], $args[1] + ".csproj")
+    $elem.Value = $newVersion
+    $doc.Save($file)
 
-$doc = [System.Xml.Linq.XDocument]::Load($file)
-$elem = $doc.Root.Element("PropertyGroup").Element("Version")
-$version = $elem.Value.Split('.')
-$newVersion = $version[0] + "." + $version[1] + "." + ([int]::Parse($version[2]) + 1)
+    $projName = [System.IO.Path]::GetFileNameWithoutExtension($file)
+    Write-Host "Version of $projName bummped to $newVersion"
+}
 
-$elem.Value = $newVersion
-$doc.Save($file)
+#======================MAIN=============
+
+$projects = @("JokJaBre.Core.API", "JokJaBre.Core.Identity", "JokJaBre.Core.Objects")
+
+foreach($proj in $projects)
+{
+    $csProj = [System.IO.Path]::Combine($args[0], $proj, $proj + ".csproj")
+    Bump-Version $csProj
+}

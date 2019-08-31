@@ -3,12 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <PackageId>JokJaBre.Core.Identity</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.9</Version>
     <Authors>JokJaBre</Authors>
     <Company>JokJaBre</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Configurations>Debug;Release;Release-NuGet</Configurations>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Output\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-NuGet|AnyCPU'">
     <OutputPath>..\Output\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -28,7 +33,4 @@
       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if &quot;$(ConfigurationName)&quot;==&quot;Release&quot; (&#xD;&#xA;PowerShell -ExecutionPolicy Unrestricted -file &quot;$(SolutionDir)Scripts\VersionBump.ps1&quot; $(SolutionDir) $(ProjectName)&#xD;&#xA;)" />
-  </Target>
 </Project>

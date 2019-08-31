@@ -1,0 +1,8 @@
+.\Scripts\VersionBump.ps1 (Split-Path -parent $dte.Solution.Filename)
+
+
+
+//not working pre-build event code:
+if "$(ConfigurationName)"=="Release-NuGet" (
+PowerShell -ExecutionPolicy Unrestricted -file "$(SolutionDir)Scripts\VersionBump.ps1" $(SolutionDir)
+)

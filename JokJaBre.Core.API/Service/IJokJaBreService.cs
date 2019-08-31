@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JokJaBre.Core.API
 {
@@ -9,10 +10,16 @@ namespace JokJaBre.Core.API
         where TModel : IJokJaBreModel
     {
 
-        IEnumerable<TResponse> GetAll<TResponse>() where TResponse : IJokJaBreResponse;
-        TResponse GetById<TResponse, TClass>(TClass key) where TResponse : IJokJaBreResponse;
-        TResponse Create<TRequest, TResponse>(TRequest obj)
+        IEnumerable<TResponse> GetAll<TResponse>() 
+            where TResponse : IJokJaBreResponse;
+
+        Task<TResponse> GetById<TResponse, TClass>(TClass key) 
+            where TResponse : IJokJaBreResponse;
+
+        Task<TResponse> Create<TRequest, TResponse>(TRequest obj)
             where TRequest : IJokJaBreRequest
             where TResponse : IJokJaBreResponse;
+
+        Task<bool> Delete<TClass>(TClass key);
     }
 }

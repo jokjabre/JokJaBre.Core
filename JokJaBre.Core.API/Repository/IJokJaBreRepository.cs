@@ -1,5 +1,6 @@
 ﻿using JokJaBre.Core.Objects;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JokJaBre.Core.API
 {
@@ -7,8 +8,9 @@ namespace JokJaBre.Core.API
         where TModel : IJokJaBreModel
     {
         IEnumerable<TModel> GetAll();
-        TModel GetById<TClass>(TClass key, bool shouldThrow = true);
+        Task<TModel> GetById<TClass>(TClass key, bool shouldThrow = true);
 
-        TModel Create(TModel model);
+        Task<TModel> Create(TModel model);
+        Task<bool> Delete<TClass>(TClass key);
     }
 }

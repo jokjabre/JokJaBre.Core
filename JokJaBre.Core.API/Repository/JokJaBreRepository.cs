@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JokJaBre.Core.API
 {
@@ -14,13 +15,13 @@ namespace JokJaBre.Core.API
             m_context = context;
         }
 
-        public TModel Create(TModel model)
+        public async Task<TModel> Create(TModel model)
         {
             try
             {
-                var res = m_context.Set<TModel>().Add(model);
-                m_context.SaveChanges();
-                res.Reload();
+                var res = await m_context.Set<TModel>().AddAsync(model);
+                await m_context.SaveChangesAsync();
+                await res.ReloadAsync();
 
                 return res.Entity;
             }
@@ -42,24 +43,42 @@ namespace JokJaBre.Core.API
             }
         }
 
-        public TModel GetById<TClass>(TClass key, bool shouldThrow = true)
+        public virtual async Task<TModel> GetById<TClass>(TClass key, bool shouldThrowIfNull = true)
         {
             TModel result;
             try
             {
-                result =  m_context.Find<TModel>(key);
+                result =  await m_context.FindAsync<TModel>(key);
             }
             catch (Exception ex)
             {
                 throw ApiExceptions.Error("Error while retrieving object", ex);
             }
 
-            if(result == null && shouldThrow)
+            if(result == null && shouldThrowIfNull)
             {
                 throw ApiExceptions.ObjectNotFound;
             }
 
             return result;
+        }
+
+        public virtual async Task<bool> Delete<TClass>(TClass key)
+        {
+            try
+            {
+                var obj = m_context.Find<TModel>(key);
+                if(obj == null)
+                {
+                    throw ApiExceptions.ObjectNotFound;
+                }
+                m_context.Remove(obj);
+                return (await m_context.SaveChangesAsync()) > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ApiExceptions.Error("Error while deleting object", ex);
+            }
         }
     }
 }
