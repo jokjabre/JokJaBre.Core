@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace JokJaBre.Core.API
@@ -31,11 +32,11 @@ namespace JokJaBre.Core.API
             }
         }
 
-        public virtual IEnumerable<TModel> GetAll()
+        public virtual IEnumerable<TModel> GetAll(Func<DbSet<TModel>, IQueryable<TModel>> includes = null)
         {
             try
             {
-                return m_context.Set<TModel>();
+                return GetIncludes(includes);
             }
             catch(Exception ex)
             {
@@ -43,12 +44,12 @@ namespace JokJaBre.Core.API
             }
         }
 
-        public virtual async Task<TModel> GetById<TClass>(TClass key, bool shouldThrowIfNull = true)
+        public virtual async Task<TModel> GetById<TClass>(TClass key, Func<DbSet<TModel>, IQueryable<TModel>> includes = null, bool shouldThrowIfNull = true)
         {
             TModel result;
             try
             {
-                result =  await m_context.FindAsync<TModel>(key);
+                result =  await ((DbSet<TModel>)GetIncludes(includes)).FindAsync(key);
             }
             catch (Exception ex)
             {
@@ -79,6 +80,17 @@ namespace JokJaBre.Core.API
             {
                 throw ApiExceptions.Error("Error while deleting object", ex);
             }
+        }
+
+        public virtual async Task<bool> SaveChanges()
+        {
+            return (await m_context.SaveChangesAsync()) > 0;
+        }
+
+        protected IQueryable<TModel> GetIncludes(Func<DbSet<TModel>, IQueryable<TModel>> includes)
+        {
+            var result = m_context.Set<TModel>();
+            return includes?.Invoke(result) ?? result;
         }
     }
 }

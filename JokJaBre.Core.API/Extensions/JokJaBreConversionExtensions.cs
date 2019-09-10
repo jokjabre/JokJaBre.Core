@@ -56,6 +56,8 @@ namespace JokJaBre.Core.Extensions
             foreach (var prop in sourceProps)
             {
                 var destProp = destType.GetProperty(prop.Name);
+                if (destProp == null || !prop.PropertyType.IsAssignableFrom(destProp.PropertyType)) continue;
+
                 destProp?.SetValue(destination, prop.GetValue(source));
             }
         }
