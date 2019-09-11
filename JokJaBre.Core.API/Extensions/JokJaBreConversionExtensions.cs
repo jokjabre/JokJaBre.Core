@@ -1,5 +1,7 @@
-﻿using JokJaBre.Core.Objects;
+﻿using JokJaBre.Core.API.Attributes;
+using JokJaBre.Core.Objects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,18 +49,73 @@ namespace JokJaBre.Core.Extensions
         }
 
 
-        public static void CopyTo<TSource, TDestination>(this TSource source, TDestination destination)
-            where TSource : IJokJaBreObject
-            where TDestination : IJokJaBreObject
+        //public static void CopyTo<TSource, TDestination>(this TSource source, TDestination destination)
+        //    where TSource : IJokJaBreObject
+        //    where TDestination : IJokJaBreObject
+        //{
+        //    var sourceProps = source.GetType().GetProperties();
+        //    var destType = destination.GetType();
+        //    foreach (var prop in sourceProps)
+        //    {
+        //        var destProp = destType.GetProperty(prop.Name);
+        //        if (destProp == null) continue;
+
+        //        //collection mapping
+        //        var customAttr = destProp.GetCustomAttributes(true)
+        //            .FirstOrDefault(a => a is MapAsCollectionAttribute) as MapAsCollectionAttribute;
+        //        if (customAttr != null)
+        //        {
+        //            var collection = prop.GetValue(source) as IEnumerable;
+        //            var genericArg = destProp.PropertyType.GetGenericArguments().FirstOrDefault();
+        //            if (genericArg == null) continue;
+
+        //            destProp?.SetValue(destination, ConvertCollection(collection, genericArg).ToList());
+
+        //            continue;
+        //        }
+
+        //        //property mapping
+        //        if (!prop.PropertyType.IsAssignableFrom(destProp.PropertyType)) continue;
+        //        destProp?.SetValue(destination, prop.GetValue(source));
+        //    }
+        //}
+
+        public static void CopyTo(this object source, object destination)
         {
             var sourceProps = source.GetType().GetProperties();
             var destType = destination.GetType();
             foreach (var prop in sourceProps)
             {
                 var destProp = destType.GetProperty(prop.Name);
-                if (destProp == null || !prop.PropertyType.IsAssignableFrom(destProp.PropertyType)) continue;
+                if (destProp == null) continue;
 
+                //collection mapping
+                var customAttr = destProp.GetCustomAttributes(true).OfType<MapAsCollectionAttribute>().FirstOrDefault();
+                if (customAttr != null)
+                {
+                    var collection = prop.GetValue(source) as IEnumerable;
+                    var genericArg = destProp.PropertyType.GetGenericArguments().FirstOrDefault();
+                    if (genericArg == null) continue;
+
+                    destProp?.SetValue(destination, ConvertCollection(collection, genericArg).AsQueryable());
+
+                    continue;
+                }
+
+                //property mapping
+                if (!prop.PropertyType.IsAssignableFrom(destProp.PropertyType)) continue;
                 destProp?.SetValue(destination, prop.GetValue(source));
+            }
+        }
+
+
+        private static IEnumerable ConvertCollection(IEnumerable source, Type destType)
+        {
+            foreach(var model in source)
+            {
+                var dest = Activator.CreateInstance(destType);
+                model.CopyTo(dest);
+                yield return dest;
             }
         }
     }
