@@ -1,4 +1,9 @@
 ﻿
+using JokJaBre.Core.Objects;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+
 namespace JokJaBre.Core.API.Extensions
 {
     public static class StartupExtensions
@@ -20,5 +25,29 @@ namespace JokJaBre.Core.API.Extensions
         //        });
         //    });
         //}
+
+        public static void AddJokJaBreScopedModel<TModel, TService, TRepository>(this IServiceCollection services)
+            where TModel : class, IJokJaBreModel
+            where TService : JokJaBreService<TModel>
+            where TRepository : JokJaBreRepository<TModel>
+        {
+            services.AddTransient<IJokJaBreService<TModel>, TService>();
+            services.AddTransient<IJokJaBreRepository<TModel>, TRepository>();
+        }
+        public static void AddJokJaBreScopedModel<TModel, TService>(this IServiceCollection services)
+            where TModel : class, IJokJaBreModel
+            where TService : JokJaBreService<TModel>
+        {
+            services.AddJokJaBreScopedModel<TModel, TService, JokJaBreRepository<TModel>>();
+        }
+
+        public static void AddJokJaBreScopedModel<TModel>(this IServiceCollection services)
+            where TModel : class, IJokJaBreModel
+        {
+            services.AddJokJaBreScopedModel<TModel, JokJaBreService<TModel>>();
+        }
+
+
+
     }
 }
